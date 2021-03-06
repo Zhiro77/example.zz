@@ -1,0 +1,36 @@
+<?php
+namespace system;
+
+use Exception;
+
+class View
+{
+    public function render($view_file, $switch = true) {
+        $view_file = "views/".$view_file.".php";
+        
+        // if ($switch)
+        // {
+        //     if (file_exists($view_file))
+        //     {
+        //         include 'views/layouts/main.php';
+        //         return true;
+        //     }
+        //     else
+        //     {
+        //         throw new Exception("{$view_file} not found");
+        //     }
+        // }
+        try {
+            include 'views/layouts/header.php';
+            include $view_file;
+            include 'views/layouts/footer.php';
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    /* function __get($name) { */
+    /*     $this->name = null; */
+    /* } */
+}
+?>
